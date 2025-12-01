@@ -119,4 +119,4 @@ To deploy this logic to an Apigee Edge organization:
 4.  **Deploy:** Save as a new revision and deploy to the `prod` environment.
 
 ---
-*Maintained by Shaun Brenton*
+*Created and maintained by Shaun Brenton*
