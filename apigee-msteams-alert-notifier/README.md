@@ -1,4 +1,4 @@
-apigee-msteams-alert-notifier
+# apigee-msteams-alert-notifier
 
 # Apigee Edge: MS Teams Alert Transformation Proxy ⚡
 
