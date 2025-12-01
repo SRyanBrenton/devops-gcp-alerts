@@ -46,3 +46,6 @@ The function relies on environment variables to keep sensitive URLs out of the s
 Ensure you have the required libraries locally for testing:
 ```bash
 pip install -r requirements.txt
+
+---
+*Maintained by Shaun Brenton*
