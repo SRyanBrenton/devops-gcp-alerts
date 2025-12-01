@@ -1,0 +1,5 @@
+google-api-python-client==2.21.0
+google-apitools==0.5.32
+google-cloud-secret-manager==2.7.1
+google-cloud-logging==2.6.0
+google-cloud-resource-manager==1.0.1
