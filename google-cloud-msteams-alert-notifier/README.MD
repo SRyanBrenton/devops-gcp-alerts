@@ -70,4 +70,4 @@ This script specifically handles the **Adaptive Card v1.5** schema. It dynamical
 4.  Push to the branch and open a Pull Request.
 
 ---
-*Maintained by Shaun Brenton*
+*Created and maintained by Shaun Brenton*
