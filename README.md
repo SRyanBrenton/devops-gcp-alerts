@@ -12,6 +12,8 @@ This project is a **Serverless Cloud Function** designed to improve incident res
 
 It consumes alert payloads from **GCP Pub/Sub**, parses the JSON data, and formats it into a high-visibility **Adaptive Card** sent directly to an MS Teams channel. This enables "ChatOps" workflows where engineering teams can view incident details, severity, and runbooks without leaving their communication platform.
 
+Once this script is live via either a Cloud Run Function 2nd Gen, or Cloud Function 1st Gen you will create a new notificaiton channel within GCP under Ops Observability Monitoring. Be sure to create a new Pub/Sub notification. Any alerts you want to notify to your MS Teams channel you will add this channel to your alert notification rules.
+
 ## 🏗 Architecture
 The data flow represents an event-driven architecture:
 
