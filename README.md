@@ -1,48 +1,31 @@
-# devops-gcp-alerts
-Google Cloud Alert Scripts for DevOps/TechOps
+# DevOps Alerting & ChatOps Automation 🚨 ☁️
 
-# GCP Monitoring to MS Teams Bridge ☁️ 🚀
+![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
+![Focus](https://img.shields.io/badge/Focus-Observability_%26_Incident_Response-blue?style=for-the-badge)
 
-![Python](https://img.shields.io/badge/Python-3.9-blue?style=for-the-badge&logo=python&logoColor=white)
-![GCP](https://img.shields.io/badge/Google_Cloud-Platform-red?style=for-the-badge&logo=google-cloud&logoColor=white)
-![Teams](https://img.shields.io/badge/Microsoft_Teams-ChatOps-purple?style=for-the-badge&logo=microsoft-teams&logoColor=white)
+## 👋 Overview
+Welcome to my alerting automation repository. This collection contains production-grade integrations that bridge **Google Cloud Platform (GCP)** and **Apigee Edge** monitoring systems with **Microsoft Teams**.
 
-## 📖 Overview
-This project is a **Serverless Cloud Function** designed to improve incident response times by bridging Google Cloud Platform (GCP) monitoring with Microsoft Teams. 
+These tools enable "ChatOps" workflows, converting raw system metrics and infrastructure alerts into actionable, high-visibility notifications for Engineering and SRE teams.
 
-It consumes alert payloads from **GCP Pub/Sub**, parses the JSON data, and formats it into a high-visibility **Adaptive Card** sent directly to an MS Teams channel. This enables "ChatOps" workflows where engineering teams can view incident details, severity, and runbooks without leaving their communication platform.
+## 📂 Project Index
 
-Once this script is live via either a Cloud Run Function 2nd Gen, or Cloud Function 1st Gen you will create a new notificaiton channel within GCP under Ops Observability Monitoring. Be sure to create a new Pub/Sub notification. Any alerts you want to notify to your MS Teams channel you will add this channel to your alert notification rules.
-
-## 🏗 Architecture
-The data flow represents an event-driven architecture:
-
-`GCP Monitoring Alert` ➔ `Pub/Sub Topic` ➔ `Cloud Function (Python)` ➔ `MS Teams Webhook`
-
-## ✨ Key Features
-* **Adaptive Cards:** Converts raw JSON alerts into rich, interactive UI cards (not just plain text).
-* **Conditional Logic:** Only forwards "Open" incidents; automatically filters out closed/resolved states to reduce noise.
-* **Structured Logging:** Implements Google Cloud Logging with configurable log levels for deep observability.
-* **Secret Management:** Includes helper functions for integrating with GCP Secret Manager for secure credential retrieval.
-
-## 🛠️ Prerequisites
-* Google Cloud Platform project with billing enabled.
-* **Cloud Functions API** and **Pub/Sub API** enabled.
-* A Microsoft Teams channel with an **Incoming Webhook** configured.
-
-## ⚙️ Configuration & Environment Variables
-The function relies on environment variables to keep sensitive URLs out of the source code. Ensure the following are set in your Cloud Function runtime environment:
-
-| Variable | Description | Example Value |
+| Application | Stack | Description |
 | :--- | :--- | :--- |
-| `MS_TEAMS_URL` | **(Required)** The webhook URL for the destination Teams channel. | `https://outlook.office.com/webhook/...` |
-| `RUNBOOK_URL` | **(Required)** Link to your internal wiki/Confluence for SOPs. | `https://wiki.company.com/ops/runbook` |
-| `PROJECT_ID` | **(Required)** The GCP Project ID where the function resides. | `my-prod-project-123` |
-| `LOG_LEVEL` | (Optional) Sets the verbosity of the logs. Default: `INFO`. | `DEBUG`, `INFO`, `WARN` |
+| **[Google Cloud Teams Notifier](./google-cloud-msteams-alert-notifier)** | Python, Cloud Functions, Pub/Sub | A serverless function that ingests GCP Monitoring alerts via Pub/Sub and formats them into Adaptive Cards for MS Teams. |
+| **[Apigee Edge Alert Notifier](./apigee-msteams-alert-notifier)** | JavaScript, Apigee Policies | A middleware proxy script that intercepts API Gateway alerts and transforms them into rich notifications with threshold details. |
 
-## 🚀 Deployment Guide
+## 💻 Technologies Used
+* **Cloud Infrastructure:** Google Cloud Platform (Cloud Functions, Pub/Sub, Logging)
+* **API Gateway:** Google Apigee Edge
+* **Languages:** Python 3.9, JavaScript (ES6)
+* **Collaboration:** Microsoft Teams Webhooks (Adaptive Cards 1.5)
 
-### 1. Install Dependencies
-Ensure you have the required libraries locally for testing:
-```bash
-pip install -r requirements.txt
+## 🏗 Architecture Summary
+This repository demonstrates an **Event-Driven Architecture**:
+1.  **Ingestion:** Alerts are triggered by Infrastructure (GCP) or API Traffic (Apigee).
+2.  **Transformation:** Scripts parse JSON payloads to extract severity, resource ID, and runbook links.
+3.  **Notification:** Formatted cards are pushed to specific Teams Channels based on the alert context.
+
+---
+*Created and maintained by [SRyanBrenton](https://github.com/SRyanBrenton)*
